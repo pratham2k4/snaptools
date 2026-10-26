@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Free browser-based passport photo sizing, signature resizing, image compression and PDF tools. Your files stay on your device.">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>SnapTools — Free Photo & PDF Tools</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="SnapTools home"><span class="brand-mark">S</span> snaptools</a>
+    <nav><a href="#photo">Photo tools</a><a href="#pdf">PDF tools</a><a href="#privacy">Privacy</a></nav>
+    <a class="top-cta" href="#tools">Use free tools <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> FREE ONLINE UTILITIES</div>
+        <h1>Everyday file tools.<br><span>Simple, private, free.</span></h1>
+        <p>Resize photos, prepare signatures, compress images and manage PDFs — right in your browser. Your files are not uploaded to our server.</p>
+        <div class="hero-actions"><a class="btn primary" href="#tools">Explore tools <span>↓</span></a><div class="trust"><span class="trust-icon">✓</span> Files stay on your device</div></div>
+        <div class="hero-stats"><div><strong>100%</strong><span>Browser processing</span></div><div><strong>₹0</strong><span>To use these tools</span></div><div><strong>No account</strong><span>Required</span></div></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of photo and document tools">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="floating-card card-photo"><div class="mini-photo"><div class="mini-head"></div><div class="mini-body"></div></div><div><b>Photo ready</b><small>35 × 45 mm</small></div><span class="check">✓</span></div>
+        <div class="floating-card card-pdf"><div class="pdf-icon">PDF</div><div><b>Document tools</b><small>Merge · Split · Organize</small></div></div>
+        <div class="floating-card card-compress"><span class="compress-icon">↘</span><div><b>Smaller file</b><small>Easy to upload</small></div><span class="saving">−62%</span></div>
+        <div class="hero-circle"><div class="circle-inner"><span>✦</span><b>Make it<br>just right.</b><small>In a few clicks</small></div></div>
+      </div>
+    </section>
+
+    <section class="privacy-strip" id="privacy">
+      <div class="privacy-symbol">⌁</div><div><strong>Your files stay yours.</strong><p>Photo and PDF processing happens locally in your browser. We do not receive your files.</p></div><a href="#how-it-works">How it works <span>→</span></a>
+    </section>
+
+    <section class="tools-section" id="tools">
+      <div class="section-heading"><div><div class="eyebrow">THE TOOLKIT</div><h2>What do you need to do?</h2><p>Pick a tool and get it done without installing anything.</p></div><div class="free-pill"><span>✦</span> Always free to use</div></div>
+      <div class="tool-grid">
+        <a class="tool-card featured" href="#photo"><div class="tool-icon lavender">▣</div><span class="tool-tag">POPULAR</span><h3>Passport photo maker</h3><p>Prepare a photo with a standard crop, white canvas and precise output size.</p><div class="tool-bottom"><span>Open tool</span><b>↗</b></div></a>
+        <a class="tool-card" href="#image"><div class="tool-icon peach">↔</div><h3>Image & signature resizer</h3><p>Set exact pixel dimensions and compress images to a smaller file size.</p><div class="tool-bottom"><span>Open tool</span><b>↗</b></div></a>
+        <a class="tool-card" href="#pdf"><div class="tool-icon blue">▤</div><h3>PDF utilities</h3><p>Merge multiple PDFs or extract selected pages into a new PDF.</p><div class="tool-bottom"><span>Open tool</span><b>↗</b></div></a>
+        <a class="tool-card" href="#image"><div class="tool-icon mint">⇩</div><h3>Image compressor</h3><p>Reduce JPEG file size while keeping control of image quality.</p><div class="tool-bottom"><span>Open tool</span><b>↗</b></div></a>
+      </div>
+    </section>
+
+    <section class="workspace-section" id="photo">
+      <div class="workspace-intro"><div class="eyebrow">01 / PHOTO TOOL</div><h2>Passport photo maker</h2><p>Prepare a photo for applications with a standard 35 × 45 mm portrait crop. Adjust the crop and download a JPEG. Requirements vary by application, so always check the official instructions.</p><div class="note"><span>ⓘ</span><span>This first version sizes and crops your photo. It does not automatically remove a background or guarantee official compliance.</span></div></div>
+      <div class="workspace">
+        <div class="upload-zone" id="photoDrop"><input type="file" id="photoFile" accept="image/jpeg,image/png,image/webp" hidden><div class="upload-symbol">↑</div><h3>Drop a photo here</h3><p>or <button class="text-button" data-trigger="photoFile">browse files</button></p><small>JPG, PNG or WebP · Up to 10 MB</small></div>
+        <div class="editor hidden" id="photoEditor">
+          <div class="preview-wrap"><canvas id="photoCanvas" width="413" height="531"></canvas></div>
+          <div class="editor-controls">
+            <label for="photoZoom">Zoom / fit</label><input id="photoZoom" type="range" min="100" max="180" value="100">
+            <label for="photoBg">Canvas background</label><select id="photoBg"><option value="#ffffff">White</option><option value="#f5f5f5">Light grey</option><option value="#dcecff">Pale blue</option></select>
+            <label for="photoPreset">Output preset</label><select id="photoPreset"><option value="413x531">35 × 45 mm (300 DPI approx.)</option><option value="354x472">30 × 40 mm (300 DPI approx.)</option><option value="600x600">Square photo</option></select>
+            <button class="btn primary full" id="downloadPhoto">Download JPEG</button><button class="btn secondary full" id="resetPhoto">Choose another photo</button>
+          </div>
+        </div>
+        <div class="status" id="photoStatus" role="status"></div>
+      </div>
+    </section>
+
+    <section class="workspace-section reverse" id="image">
+      <div class="workspace-intro"><div class="eyebrow">02 / IMAGE TOOL</div><h2>Resize & compress images</h2><p>Set the exact width and height needed for an exam photo or signature. Export as JPEG or PNG and check the final file size before downloading.</p><div class="note"><span>ⓘ</span><span>Transparent PNGs become white when exported as JPEG. To preserve transparency, choose PNG.</span></div></div>
+      <div class="workspace">
+        <div class="upload-zone" id="imageDrop"><input type="file" id="imageFile" accept="image/jpeg,image/png,image/webp" hidden><div class="upload-symbol">↑</div><h3>Drop an image here</h3><p>or <button class="text-button" data-trigger="imageFile">browse files</button></p><small>JPG, PNG or WebP · Up to 10 MB</small></div>
+        <div class="editor hidden" id="imageEditor">
+          <div class="image-preview"><img id="imagePreview" alt="Selected image preview"></div>
+          <div class="editor-controls">
+            <div class="two-fields"><div><label for="imgWidth">Width (px)</label><input id="imgWidth" type="number" min="1" max="5000" value="300"></div><div><label for="imgHeight">Height (px)</label><input id="imgHeight" type="number" min="1" max="5000" value="100"></div></div>
+            <label class="checkline"><input id="keepRatio" type="checkbox" checked> Keep aspect ratio</label>
+            <label for="imgFormat">Output format</label><select id="imgFormat"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select>
+            <label for="imgQuality">JPEG quality <span id="qualityValue">82%</span></label><input id="imgQuality" type="range" min="20" max="100" value="82">
+            <label for="targetKB">Optional target size (KB)</label><input id="targetKB" type="number" min="1" max="10000" placeholder="e.g. 50">
+            <button class="btn primary full" id="downloadImage">Resize & download</button>
+          </div>
+        </div>
+        <div class="status" id="imageStatus" role="status"></div>
+      </div>
+    </section>
+
+    <section class="workspace-section" id="pdf">
+      <div class="workspace-intro"><div class="eyebrow">03 / PDF TOOL</div><h2>Merge & split PDFs</h2><p>Combine PDF files into one document or extract a range of pages into a separate file. Processing stays in your browser.</p><div class="note"><span>ⓘ</span><span>Encrypted, damaged, unusually complex or very large PDFs may not process. Try smaller files if your browser runs out of memory.</span></div></div>
+      <div class="workspace">
+        <div class="upload-zone" id="pdfDrop"><input type="file" id="pdfFiles" accept="application/pdf,.pdf" multiple hidden><div class="upload-symbol">↑</div><h3>Drop PDF files here</h3><p>or <button class="text-button" data-trigger="pdfFiles">browse files</button></p><small>PDF files · Up to 15 MB each · Max 5 files</small></div>
+        <div class="pdf-editor hidden" id="pdfEditor">
+          <div class="pdf-file-list" id="pdfFileList"></div>
+          <div class="pdf-actions">
+            <button class="btn primary" id="mergePdf">Merge PDFs</button>
+            <div class="split-box"><label for="splitRange">Extract pages from the first PDF</label><input id="splitRange" type="text" placeholder="e.g. 1-3, 5"><small>Page numbers start at 1. Use commas and ranges.</small><button class="btn secondary full" id="splitPdf">Extract selected pages</button></div>
+            <button class="btn secondary full" id="resetPdf">Choose different PDFs</button>
+          </div>
+        </div>
+        <div class="status" id="pdfStatus" role="status"></div>
+      </div>
+    </section>
+
+    <section class="how-section" id="how-it-works"><div class="eyebrow">MADE TO BE SIMPLE</div><h2>Three steps. That's it.</h2><div class="steps"><div><span>01</span><h3>Choose your file</h3><p>Select a photo, signature or PDF from your device.</p></div><div><span>02</span><h3>Make your changes</h3><p>Adjust the size, format or pages using simple controls.</p></div><div><span>03</span><h3>Download the result</h3><p>Your finished file is saved directly to your device.</p></div></div></section>
+
+    <section class="bottom-cta"><div><div class="eyebrow">NO SIGN-UP. NO UPLOADS.</div><h2>Your next file task, sorted.</h2><p>Free tools that work right in your browser.</p></div><a class="btn light" href="#tools">Get started ↑</a></section>
+  </main>
+  <footer><a class="brand" href="#"><span class="brand-mark">S</span> snaptools</a><p>Free browser-based utilities. Files are processed locally on your device.</p><div class="footer-links"><a href="#privacy">Privacy</a><a href="mailto:fekilofficial@gmail.com">Contact</a></div><small>© <span id="year"></span> SnapTools. Replace the demo contact address before publishing.</small></footer>
+</body>
+</html>
